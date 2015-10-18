@@ -1,4 +1,8 @@
-import manifest
+import InstrumentationManifestTools.simple_xml as xml
+import re
+
+def make_symbol(*args):
+    return re.sub('[^0-9A-Z]+', '_', '_'.join(args).upper())
 
 def to_manifest_xml(providers):
     root = xml.Node(

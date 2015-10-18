@@ -1,4 +1,4 @@
-import manifest
+import InstrumentationManifestTools.simple_xml as xml
 
 def to_wprp_xml(profiles):
 

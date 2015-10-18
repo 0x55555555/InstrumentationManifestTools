@@ -1,8 +1,4 @@
-import simple_xml as xml
-import collections, re, uuid, hashlib
-
-def make_symbol(*args):
-    return re.sub('[^0-9A-Z]+', '_', '_'.join(args).upper())
+import collections, uuid, hashlib
 
 class ManifestBase:
     """
