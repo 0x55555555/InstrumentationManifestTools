@@ -35,10 +35,11 @@ class Provider(ManifestBase):
     """
     Base object which provides instrumentation for an executable
     """
-    def __init__(self, name):
+    def __init__(self, name, **kwargs):
         super().__init__(name)
         self.contents = collections.defaultdict(lambda: [])
         self._next_value = 1
+        self._binary_filename = kwargs["binary_filename"]
 
     def add(self, obj):
         container = self.contents[obj.__class__.__name__.lower()]
@@ -62,7 +63,7 @@ class Provider(ManifestBase):
 
     @property
     def binary_filename(self):
-        return "%temp%/pork.dll"
+        return self._binary_filename
 
 class ItemBase(ManifestBase):
     def __init__(self, name, **kwargs):
@@ -132,10 +133,11 @@ class Opcode(ItemBase):
 class Keyword(ItemBase):
     def __init__(self, name, **kwargs):
         super().__init__(name)
+        self._mask = kwargs["mask"]
 
     @property
     def mask(self):
-        return "0x1"
+        return self._mask
 
 class Filter(ItemBase):
     def __init__(self, name, **kwargs):
