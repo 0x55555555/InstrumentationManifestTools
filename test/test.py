@@ -2,8 +2,9 @@ import InstrumentationManifestTools.manifest as manifest
 import InstrumentationManifestTools.manifest_generator as manifest_generator
 import InstrumentationManifestTools.wprp_generator as wprp_generator
 
+
 def sample():
-    p = manifest.Provider("Multi-Main", binary_filename = "%temp%/test.dll")
+    p = manifest.Provider("Multi-Main", binary_filename="%temp%/test.dll")
 
     task = manifest.Task("task1")
     p.add(task)
@@ -11,7 +12,7 @@ def sample():
     op = manifest.Opcode("opcode")
     p.add(op)
 
-    kw = manifest.Keyword("kw", mask = '0x1')
+    kw = manifest.Keyword("kw", mask='0x1')
     p.add(kw)
 
     filter = manifest.Filter("fil")
@@ -28,20 +29,19 @@ def sample():
     p.add(channel)
 
     ev = manifest.Event("pork",
-        channel = channel,
-        task = task,
-        opcode = op,
-        keywords = kw,
-        level = lev,
-        template = templ
-        )
+                        channel=channel,
+                        task=task,
+                        opcode=op,
+                        keywords=kw,
+                        level=lev,
+                        template=templ
+                        )
     p.add(ev)
 
     ev = manifest.Event("pork2",
-        template = templ
-        )
+                        template=templ
+                        )
     p.add(ev)
-
 
     with open('sample.man', 'w') as file:
         file.write(manifest_generator.to_manifest_xml([p]))
@@ -51,5 +51,6 @@ def sample():
 
     with open('sample.wprp', 'w') as file:
         file.write(wprp_generator.to_wprp_xml([profile_1]))
+
 
 sample()
