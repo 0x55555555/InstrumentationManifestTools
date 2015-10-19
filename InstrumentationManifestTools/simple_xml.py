@@ -47,9 +47,9 @@ class Node:
         new_kwargs = kwargs
         new_kwargs["line_start"] = line_start + tab
 
-        children = [c.to_xml(**new_kwargs) for c in self.children ]
+        children = [c.to_xml(**new_kwargs) for c in self.children]
 
-        str = line_start + self.opening_xml(close = not children) + new_line
+        str = line_start + self.opening_xml(close=not children) + new_line
 
         if children:
             str += "".join(children) + line_start + self.closing_xml() + new_line
@@ -57,7 +57,7 @@ class Node:
         return str
 
     def opening_xml(self, **kwargs):
-        attributes = " ".join(["{}=\"{}\"".format(k[0], self.escape(k[1])) for k in sorted(self.attributes) ])
+        attributes = " ".join(["{}=\"{}\"".format(k[0], self.escape(k[1])) for k in sorted(self.attributes)])
         if len(attributes):
             attributes = " " + attributes
 

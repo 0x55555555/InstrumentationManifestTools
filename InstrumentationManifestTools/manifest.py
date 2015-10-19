@@ -1,9 +1,13 @@
-import collections, uuid, hashlib
+import collections
+import uuid
+import hashlib
+
 
 class ManifestBase:
     """
     Base to all nameable objects in the manifest.
     """
+
     def __init__(self, name):
         self._name = name
 
@@ -14,9 +18,10 @@ class ManifestBase:
         """
         return self._name
 
+
 class Profile(ManifestBase):
     def __init__(self, name, gui_name):
-        super().__init__(name)
+        super(Profile, self).__init__(name)
         self._providers = []
         self._gui_name = gui_name
 
@@ -31,12 +36,14 @@ class Profile(ManifestBase):
     def providers(self):
         return self._providers
 
+
 class Provider(ManifestBase):
     """
     Base object which provides instrumentation for an executable
     """
+
     def __init__(self, name, **kwargs):
-        super().__init__(name)
+        super(Provider, self).__init__(name)
         self.contents = collections.defaultdict(lambda: [])
         self._next_value = 1
         self._binary_filename = kwargs["binary_filename"]
@@ -65,9 +72,10 @@ class Provider(ManifestBase):
     def binary_filename(self):
         return self._binary_filename
 
+
 class ItemBase(ManifestBase):
     def __init__(self, name, **kwargs):
-        super().__init__(name)
+        super(ItemBase, self).__init__(name)
         self._message = kwargs.get("message", None)
         self._value = 0
 
@@ -84,9 +92,10 @@ class ItemBase(ManifestBase):
     def message(self):
         return self._message
 
+
 class Event(ItemBase):
     def __init__(self, name, **kwargs):
-        super().__init__(name)
+        super(Event, self).__init__(name)
 
         self._channel = kwargs.get("channel", None)
         self._task = kwargs.get("task", None)
@@ -121,41 +130,36 @@ class Event(ItemBase):
 
 
 class Task(ItemBase):
-    def __init__(self, name, **kwargs):
-        super().__init__(name)
+    pass
+
 
 class Opcode(ItemBase):
     minimum_id = 10
 
-    def __init__(self, name, **kwargs):
-        super().__init__(name)
 
 class Keyword(ItemBase):
     def __init__(self, name, **kwargs):
-        super().__init__(name)
+        super(Keyword, self).__init__(name)
         self._mask = kwargs["mask"]
 
     @property
     def mask(self):
         return self._mask
 
-class Filter(ItemBase):
-    def __init__(self, name, **kwargs):
-        super().__init__(name)
 
+class Filter(ItemBase):
     @property
     def template(self):
         return None
 
+
 class Level(ItemBase):
     minimum_id = 16
 
-    def __init__(self, name, **kwargs):
-        super().__init__(name)
 
 class Template(ItemBase):
     def __init__(self, name, **kwargs):
-        super().__init__(name)
+        super(Template, self).__init__(name)
         self._data = []
 
     def add_data(self, name, type):
@@ -165,9 +169,10 @@ class Template(ItemBase):
     def data(self):
         return self._data
 
+
 class Channel(ItemBase):
     def __init__(self, name, **kwargs):
-        super().__init__(name)
+        super(Channel, self).__init__(name)
         self._type = kwargs.get("type", "Operational")
 
     @property
