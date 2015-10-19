@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<WindowsPerformanceRecorder Author="N/A" Comments="Auto generated" Copyright="" Tag="Enables providers" Version="1.0">
+  <Profiles>
+    <EventCollector Id="General" Name="Sample Event Collector">
+      <BufferSize Value="64"/>
+      <Buffers Value="64"/>
+    </EventCollector>
+    <Profile Description="Sweet test profile" DetailLevel="Verbose" Id="General_Profile.Verbose.Memory" LoggingMode="Memory" Name="General_Profile">
+      <Collectors>
+        <EventCollectorId Value="General">
+          <EventProviders>
+            <EventProvider Id="Multi-Main_Provider" Name="Multi-Main"/>
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+    <Profile Description="Sweet test profile" DetailLevel="Verbose" Id="General_Profile.Verbose.File" LoggingMode="File" Name="General_Profile">
+      <Collectors>
+        <EventCollectorId Value="General">
+          <EventProviders>
+            <EventProvider Id="Multi-Main_Provider" Name="Multi-Main"/>
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+    <Profile Description="Sweet test profile" DetailLevel="Light" Id="General_Profile.Light.Memory" LoggingMode="Memory" Name="General_Profile">
+      <Collectors>
+        <EventCollectorId Value="General">
+          <EventProviders>
+            <EventProvider Id="Multi-Main_Provider" Name="Multi-Main"/>
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+    <Profile Description="Sweet test profile" DetailLevel="Light" Id="General_Profile.Light.File" LoggingMode="File" Name="General_Profile">
+      <Collectors>
+        <EventCollectorId Value="General">
+          <EventProviders>
+            <EventProvider Id="Multi-Main_Provider" Name="Multi-Main"/>
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+  </Profiles>
+</WindowsPerformanceRecorder>

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider guid="{b3d04e7f-c398-7767-5f0a-73f59d126c06}" messageFileName="%temp%/test.dll" name="Multi-Main" resourceFileName="%temp%/test.dll" symbol="MULTI_MAIN">
+        <events>
+          <event channel="kchaw" keywords="kw" level="lev" opcode="opcode" symbol="MULTI_MAIN_EVENT_PORK" task="task1" template="cha" value="8"/>
+          <event symbol="MULTI_MAIN_EVENT_PORK2" template="cha" value="9"/>
+        </events>
+        <tasks>
+          <task name="task1" symbol="MULTI_MAIN_TASK_TASK1" value="1"/>
+        </tasks>
+        <opcodes>
+          <opcode name="opcode" symbol="MULTI_MAIN_OPCODE_OPCODE" value="12"/>
+        </opcodes>
+        <keywords>
+          <keyword mask="0x1" name="kw"/>
+        </keywords>
+        <filters>
+          <filter name="fil" symbol="MULTI_MAIN_FILTER_FIL" value="4"/>
+        </filters>
+        <levels>
+          <level name="lev" symbol="MULTI_MAIN_LEVEL_LEV" value="21"/>
+        </levels>
+        <channels>
+          <channel chid="kchaw" enabled="true" name="kchaw/Operational" type="Operational"/>
+        </channels>
+        <templates>
+          <template tid="cha">
+            <data inType="win:AnsiString" name="Description"/>
+          </template>
+        </templates>
+      </provider>
+    </events>
+  </instrumentation>
+</instrumentationManifest>
