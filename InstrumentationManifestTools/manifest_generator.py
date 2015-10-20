@@ -28,7 +28,8 @@ def to_manifest_xml(providers):
                                       symbol=make_symbol(p.name),
                                       guid=p.guid,
                                       messageFileName=p.binary_filename,
-                                      resourceFileName=p.binary_filename
+                                      resourceFileName=p.binary_filename,
+                                      message=p.message
                                       )
 
         def build_container(provider, xml, name, build):

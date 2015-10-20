@@ -19,6 +19,26 @@ class ManifestBase:
         return self._name
 
 
+class ItemBase(ManifestBase):
+    def __init__(self, name, **kwargs):
+        super(ItemBase, self).__init__(name)
+        self._message = kwargs.get("message", None)
+        self._value = 0
+
+    def assign_value(self, value):
+        if hasattr(self.__class__, 'minimum_id'):
+            value += self.__class__.minimum_id
+        self._value = value
+
+    @property
+    def value(self):
+        return self._value
+
+    @property
+    def message(self):
+        return self._message
+
+
 class Profile(ManifestBase):
     def __init__(self, name, gui_name):
         super(Profile, self).__init__(name)
@@ -37,7 +57,7 @@ class Profile(ManifestBase):
         return self._providers
 
 
-class Provider(ManifestBase):
+class Provider(ItemBase):
     """
     Base object which provides instrumentation for an executable
     """
@@ -71,27 +91,6 @@ class Provider(ManifestBase):
     @property
     def binary_filename(self):
         return self._binary_filename
-
-
-class ItemBase(ManifestBase):
-    def __init__(self, name, **kwargs):
-        super(ItemBase, self).__init__(name)
-        self._message = kwargs.get("message", None)
-        self._value = 0
-
-    def assign_value(self, value):
-        if hasattr(self.__class__, 'minimum_id'):
-            value += self.__class__.minimum_id
-        self._value = value
-
-    @property
-    def value(self):
-        return self._value
-
-    @property
-    def message(self):
-        return self._message
-
 
 class Event(ItemBase):
     def __init__(self, name, **kwargs):
